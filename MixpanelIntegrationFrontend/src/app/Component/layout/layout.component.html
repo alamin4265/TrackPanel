@@ -1,0 +1,34 @@
+
+<nav class="custom-navbar">
+    <div class="navbar-container">
+      <ul class="navbar-menu">
+        <li class="navbar-item">
+          <a class="navbar-link active" href="#">Dashboard</a>
+        </li>
+        <li class="navbar-item ">
+            <a class="navbar-link active" routerLink="/products" (click)="viewProduct()">Product</a>
+        </li>
+        <li class="navbar-item ">
+          <a class="navbar-link" href="#">Link</a>
+        </li>
+        <li class="navbar-item ">
+          <a class="navbar-link " href="#">Link</a>
+        </li>
+      </ul>
+      <div class="navbar-actions">
+        <span class="username">{{loggedUser?.name}}</span>
+        <button class="logout-btn" (click)="onLogOut()">LogOut</button>
+      </div>
+    </div>
+</nav>
+<div class="container">
+    <div>
+      <button (click)="onviewProduct()">ALL Products</button>
+    </div>
+</div>
+<div class="content">
+    <!-- <app-product></app-product> -->
+    <router-outlet></router-outlet> 
+</div>
+
+  

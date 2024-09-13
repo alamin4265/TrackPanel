@@ -1,4 +1,9 @@
-<!-- <p>{{title}}</p> -->
-<div class="container">
+
+<div class="container" *ngIf="isLoggedIn">
+  <!-- <app-layout></app-layout>  -->
+  <router-outlet></router-outlet> 
+</div>
+
+<div class="container" *ngIf="!isLoggedIn">
   <router-outlet></router-outlet>
 </div>

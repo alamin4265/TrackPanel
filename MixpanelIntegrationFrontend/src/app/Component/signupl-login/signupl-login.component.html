@@ -1,4 +1,4 @@
-<p>signupl-login works!</p>
+<!-- <p>signupl-login works!</p> -->
 <!-- <!DOCTYPE html>
 
 <html lang="en">
@@ -16,9 +16,10 @@
     <title>Modern Login Page | AsmrProg</title>
 
 </head> -->
+
 <div class="parent">
 
-    <div class="container Active" id="container">
+    <div class="container" [ngClass]="isSignDivVisiable ? 'active' :'' " id="container">
 
                 <div class="form-container sign-up">
 
@@ -28,31 +29,31 @@
 
                         <div class="social-icons">
 
-                            <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                            <!-- <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
 
                             <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
 
                             <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
 
-                            <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a> -->
 
                         </div>
 
                         <span>or use your email for registeration</span>
 
-                        <input type="text" placeholder="Name">
+                        <input type="text" name="name" [(ngModel)]="signUpobj.name" placeholder="Name">
 
-                        <input type="email" placeholder="Email">
+                        <input type="email" name="email" [(ngModel)]="signUpobj.email" placeholder="Email">
 
-                        <input type="password" placeholder="Password">
+                        <input type="password" name="password" [(ngModel)]="signUpobj.password" placeholder="Password">
 
-                        <button>Sign Up</button>
+                        <button (click)="onRegister()">Sign Up</button>
 
                     </form>
 
                 </div>
 
-                <div class="form-container sign-in">
+                <div class="form-container sign-in" >
 
                     <form>
 
@@ -60,56 +61,43 @@
 
                         <div class="social-icons">
 
-                            <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                            <!-- <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
 
                             <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
 
                             <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
 
-                            <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a> -->
 
                         </div>
 
                         <span>or use your email password</span>
 
-                        <input type="email" placeholder="Email">
+                        <input type="email" name="email" [(ngModel)]="loginobj.email" placeholder="Email">
 
-                        <input type="password" placeholder="Password">
+                        <input type="password" name="password" [(ngModel)]="loginobj.password" placeholder="Password">
 
                         <a href="#">Forget Your Password?</a>
 
-                        <button>Sign In</button>
+                        <button (click)="onLogin()">Sign In</button>
 
                     </form>
 
                 </div>
 
                 <div class="toggle-container">
-
                     <div class="toggle">
-
                         <div class="toggle-panel toggle-left">
-
                             <h1>Welcome Back!</h1>
-
                             <p>Enter your personal details to use all of site features</p>
-
-                            <button class="hidden" id="login">Sign In</button>
-
+                            <button class="hidden" id="login" (click)="isSignDivVisiable = false">Sign In</button>
                         </div>
-
                         <div class="toggle-panel toggle-right">
-
                             <h1>Hello, Friend!</h1>
-
                             <p>Register with your personal details to use all of site features</p>
-
-                            <button class="hidden" id="register">Sign Up</button>
-
+                            <button class="hidden" id="register" (click)="isSignDivVisiable = true">Sign Up</button>
                         </div>
-
                     </div>
-
                 </div>
 
     </div>
