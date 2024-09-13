@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1S9GFIHknEw=",
+  "dgSpecHash": "d9/Z97N8mUc=",
   "success": true,
-  "projectFilePath": "C:\\Europe\\New folder\\ProductManagement\\ProductManagement.csproj",
+  "projectFilePath": "C:\\Europe\\Testing\\ProductManagement\\ProductManagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BS990.BS-990\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\BS990.BS-990\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

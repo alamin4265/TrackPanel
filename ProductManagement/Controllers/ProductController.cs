@@ -57,19 +57,12 @@ namespace ProductManagement.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateProduct(int id, [FromBody] ProductDto productDto)
         {
-            if (id != productDto.Id)
-            {
-                return BadRequest("Product ID mismatch.");
-            }
-
             var product = await _productService.GetProductByIdAsync(id);
             if (product == null)
             {
                 return NotFound();
             }
-
-            _mapper.Map(productDto, product);
-            var updatedProduct = await _productService.UpdateProductAsync(product);
+            var updatedProduct = await _productService.UpdateProductAsync(_mapper.Map(productDto, product));
             var updatedProductDto = _mapper.Map<ProductDto>(updatedProduct);
 
             return Ok(updatedProductDto);

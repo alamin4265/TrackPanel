@@ -6114,11 +6114,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Europe\\New folder\\ProductManagement\\ProductManagement.csproj",
+      "projectUniqueName": "C:\\Europe\\Testing\\ProductManagement\\ProductManagement.csproj",
       "projectName": "ProductManagement",
-      "projectPath": "C:\\Europe\\New folder\\ProductManagement\\ProductManagement.csproj",
+      "projectPath": "C:\\Europe\\Testing\\ProductManagement\\ProductManagement.csproj",
       "packagesPath": "C:\\Users\\BS990.BS-990\\.nuget\\packages\\",
-      "outputPath": "C:\\Europe\\New folder\\ProductManagement\\obj\\",
+      "outputPath": "C:\\Europe\\Testing\\ProductManagement\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
