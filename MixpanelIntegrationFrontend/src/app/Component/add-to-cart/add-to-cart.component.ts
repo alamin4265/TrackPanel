@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CartService } from '../../Services/cart.service';
+import { MixpanelService } from '../../Shared/Services/mixpanel.service';
 
 
 @Component({
@@ -15,7 +16,10 @@ export class AddToCartComponent {
   // constructor(private cartService: CartService) {}
   totalPrice = 0;
 
-  constructor(private cartService: CartService) {
+  constructor(
+    private cartService: CartService,
+    private mixpanelService: MixpanelService
+  ) {
     debugger;
     this.cartItems = this.cartService.getCartItems();
     this.totalPrice = this.cartService.getTotalPrice();
@@ -25,6 +29,7 @@ export class AddToCartComponent {
     if (this.product) {
       this.cartService.addProductToCart(this.product, this.quantity);
       this.feedbackMessage = 'Product added to cart!';
+      this.mixpanelService.trackEvent('AddToCart', { Title: this.product.title, Quantity: this.quantity});
     } else {
       this.feedbackMessage = 'Failed to add product to cart.';
     }
