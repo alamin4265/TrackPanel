@@ -23,7 +23,6 @@ export class ProductCardComponent {
   addToCart(event: Event) {
    
     event.stopPropagation();
-    this.mixpanelService.trackEvent('AddToCart', { Title: this.product.title, Quantity: this.count});
     this.cartService.addToCart(this.product, this.count);
     this.count = 1;
   }
