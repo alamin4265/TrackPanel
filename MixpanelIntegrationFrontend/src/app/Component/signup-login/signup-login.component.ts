@@ -5,6 +5,7 @@ import { Router} from '@angular/router';
 import { ProductComponent } from '../product/product.component';
 import { HttpClient, HttpClientModule ,provideHttpClient,withFetch } from '@angular/common/http';
 import { LoginModel, SignUpModel } from '../../Model/class';
+import { MixpanelService } from '../../Shared/Services/mixpanel.service';
 
 @Component({
   selector: 'app-signup-login',
@@ -19,18 +20,23 @@ export class SignupLoginComponent {
   signUpobj : SignUpModel = new SignUpModel();
   loginobj : LoginModel = new LoginModel();
 
-  constructor(private router: Router){}
+  constructor(
+    private router: Router,
+    private mixpanelService: MixpanelService
+  ){}
 
   onRegister(){
-    debugger;
+   
     const localUser = localStorage.getItem('trackpanel18users');
     if(localUser !=null){
       const users = JSON.parse(localUser);
       users.push(this.signUpobj);
+      this.mixpanelService.trackEvent('SignUp', { email: this.signUpobj.email });
       localStorage.setItem('trackpanel18users', JSON.stringify(users));
     }else{
        const users = [];
        users.push(this.signUpobj);
+       this.mixpanelService.trackEvent('SignUp', { email: this.signUpobj.email });
        localStorage.setItem('trackpanel18users', JSON.stringify(users));
     }
     alert('Registration Success')
@@ -44,6 +50,8 @@ export class SignupLoginComponent {
       const isUserPresent = users.find((user:SignUpModel)=> user.email == this.loginobj.email && user.password == this.loginobj.password)
        if(isUserPresent != undefined)
        {
+        this.mixpanelService.identifyUser(this.loginobj.email, users.name);
+        // this.mixpanelService.trackEvent('People', { email: this.loginobj.email, eventType: 'signin' });
         localStorage.setItem('loggedUser', JSON.stringify(isUserPresent));
         // this.router.navigate(['/products']);
         this.router.navigate(['/products']).then(success => {
@@ -57,7 +65,7 @@ export class SignupLoginComponent {
        }else{
         alert("No user forund");
        }
-       debugger;
+     
     }
   }
   

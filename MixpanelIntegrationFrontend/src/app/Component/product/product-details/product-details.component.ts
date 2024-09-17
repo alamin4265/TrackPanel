@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MixpanelService } from '../../../Shared/Services/mixpanel.service';
+import { CartService } from '../../../Services/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -13,7 +15,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProductDetailsComponent {
   prod: any;
-  constructor(private route: ActivatedRoute, private http: HttpClient,private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private router: Router,
+    private mixpanelService: MixpanelService,
+    private cartService: CartService
+  ) {}
 
     // @Input() productflag : string  = 'Details';
     
@@ -22,9 +30,18 @@ export class ProductDetailsComponent {
       if (id) {
         this.http.get(`https://dummyjson.com/products/${id}`).subscribe((result: any) => {
           this.prod = result;
+          this.mixpanelService.trackEvent('ProductDetail', { Category: this.prod.category });
         });
       }
     }
+
+    addToCart(product: any){
+      // event.stopPropagation();
+      
+      this.cartService.addToCart(product, 1);
+      // this.count = 1;
+    }
+
     goBack() {
       this.router.navigate(['/products']);
     }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CartItem } from '../../Model/class';
+import { MixpanelService } from '../../Shared/Services/mixpanel.service';
 
 @Component({
   selector: 'app-checkout',
@@ -16,10 +17,13 @@ export class CheckoutComponent implements OnInit {
   cartItems: CartItem[] = [];
   totalPrice = 0;
   count : number=0;
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(private cartService: CartService,
+    private router: Router,
+    private mixpanelService: MixpanelService,
+    ) {}
 
   ngOnInit(): void {
-    debugger;
+    
     this.cartItems = this.cartService.getCartItems();
     this.totalPrice = this.cartService.getTotalPrice();
     this.count = this.cartService.getTotalCount();
@@ -28,6 +32,7 @@ export class CheckoutComponent implements OnInit {
   checkout() { 
     if (this.cartItems.length > 0) {
       this.cartService.clearCart();
+      this.mixpanelService.trackEvent('Checkout', { eventType: 'checkout'});
       // alert("checkout-success");
       this.router.navigate(['/checkout-success']);
     } else {
