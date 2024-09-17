@@ -4,7 +4,7 @@ import { MixpanelService } from '../../Shared/Services/mixpanel.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { CartItem } from '../../Model/class';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-to-cart',
@@ -21,9 +21,11 @@ export class AddToCartComponent {
  
   totalPrice = 0;
 
+  
   constructor(
     private cartService: CartService,
-    private mixpanelService: MixpanelService
+    private mixpanelService: MixpanelService,
+    private router: Router
   ) {
     debugger;
     this.cartItems = this.cartService.getCartItems();
@@ -46,6 +48,12 @@ export class AddToCartComponent {
   
   clearCart() {
     // this.cartService.clearCart();
+  }
+  goToCheckout(){
+    this.router.navigate(['/checkout']);
+  }
+  goBack() {
+    this.router.navigate(['/products']);
   }
   
 }
