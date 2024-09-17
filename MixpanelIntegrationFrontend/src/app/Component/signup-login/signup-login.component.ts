@@ -51,6 +51,7 @@ export class SignupLoginComponent {
        if(isUserPresent != undefined)
        {
         this.mixpanelService.identifyUser(this.loginobj.email);
+        this.mixpanelService.trackEvent('People', { email: this.loginobj.email, eventType: 'signin' });
         localStorage.setItem('loggedUser', JSON.stringify(isUserPresent));
         // this.router.navigate(['/products']);
         this.router.navigate(['/products']).then(success => {

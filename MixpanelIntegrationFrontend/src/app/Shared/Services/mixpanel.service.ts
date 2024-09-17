@@ -22,5 +22,8 @@ export class MixpanelService {
   // Method to identify users
   identifyUser(userId: string) {
     mixpanel.identify(userId);
+    mixpanel.people.set({
+      '$email': userId
+    });
   }
 }
