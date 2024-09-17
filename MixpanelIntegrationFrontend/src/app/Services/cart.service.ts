@@ -20,8 +20,7 @@ export class CartService {
  
   addToCart(product: any, count: number) {
     
-    this.mixpanelService.trackEvent('AddToCart', { Title: product.title});
-
+    this.mixpanelService.trackEvent('AddToCart', { Title: product.title, Quantity: count});
     const existingProduct = this.cart.find((item:any) => item.title === product.title);
     
     if (existingProduct) {

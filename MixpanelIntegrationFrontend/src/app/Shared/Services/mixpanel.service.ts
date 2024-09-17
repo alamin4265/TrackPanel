@@ -23,7 +23,7 @@ export class MixpanelService {
   identifyUser(userId: string, name:string) {
     mixpanel.identify(userId);
     mixpanel.people.set({
-      '$name': 'name',
+      '$name': name,
       '$email': userId
     });
   }

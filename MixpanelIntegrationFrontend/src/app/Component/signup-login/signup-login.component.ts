@@ -50,7 +50,7 @@ export class SignupLoginComponent {
       const isUserPresent = users.find((user:SignUpModel)=> user.email == this.loginobj.email && user.password == this.loginobj.password)
        if(isUserPresent != undefined)
        {
-        this.mixpanelService.identifyUser(this.loginobj.email, users.name);
+        this.mixpanelService.identifyUser(this.loginobj.email, isUserPresent.name);
         // this.mixpanelService.trackEvent('People', { email: this.loginobj.email, eventType: 'signin' });
         localStorage.setItem('loggedUser', JSON.stringify(isUserPresent));
         // this.router.navigate(['/products']);
