@@ -23,6 +23,7 @@ export class CartService {
         category: product.category,
         price: product.price,
         count: count,
+        images: product.images,
       };
       this.cart.push(cartItem);
     }
@@ -42,7 +43,6 @@ export class CartService {
 
   calculateTotal() {
     this.totalPrice = this.cart.reduce((acc:any, item:any) => acc + item.price * item.count, 0);
-    debugger;
   }
 
 

@@ -8,13 +8,13 @@ import { LoginModel, SignUpModel } from '../../Model/class';
 import { MixpanelService } from '../../Shared/Services/mixpanel.service';
 
 @Component({
-  selector: 'app-signupl-login',
+  selector: 'app-signup-login',
   standalone: true,
   imports: [CommonModule, FormsModule, JsonPipe],
-  templateUrl: './signupl-login.component.html',
-  styleUrl: './signupl-login.component.css'
+  templateUrl: './signup-login.component.html',
+  styleUrl: './signup-login.component.css'
 })
-export class SignuplLoginComponent {
+export class SignupLoginComponent {
 
   isSignDivVisiable: boolean = true;
   signUpobj : SignUpModel = new SignUpModel();

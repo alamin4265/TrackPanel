@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
-import { SignuplLoginComponent } from '../signupl-login/signupl-login.component';
+import { SignupLoginComponent } from '../signup-login/signup-login.component';
 import { ProductComponent } from '../product/product.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CartService } from '../../Services/cart.service';

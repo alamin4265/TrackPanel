@@ -17,3 +17,12 @@ export class SignUpModel {
       this.password= "";
     }
   }
+
+  export interface CartItem {
+    title: string;
+    price: number;
+    count: number;
+    category?: string; 
+    images?: string[]; 
+  }
+  
