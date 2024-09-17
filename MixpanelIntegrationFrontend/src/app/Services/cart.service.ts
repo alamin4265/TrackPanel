@@ -53,4 +53,11 @@ export class CartService {
   getTotalCount() {
     return this.cartCount;
   }
+  removeProductFromCart(product: any) {
+    this.cart = this.cart.filter((item: { title: any; }) => item.title !== product.title);
+  }
+
+  clearCart() {
+    this.cart = [];
+  }
 }

@@ -3,7 +3,7 @@ import { CartService } from '../../Services/cart.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { CartItem } from '../../Model/class';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-to-cart',
@@ -20,7 +20,7 @@ export class AddToCartComponent {
  
   totalPrice = 0;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private router: Router) {
   debugger;
     this.cartItems = this.cartService.getCartItems();
     console.log(this.cartItems); 
@@ -41,6 +41,12 @@ export class AddToCartComponent {
   
   clearCart() {
     // this.cartService.clearCart();
+  }
+  goToCheckout(){
+    this.router.navigate(['/checkout']);
+  }
+  goBack() {
+    this.router.navigate(['/products']);
   }
   
 }
