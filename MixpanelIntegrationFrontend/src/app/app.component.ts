@@ -12,15 +12,14 @@ import { LayoutComponent } from './Component/layout/layout.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
-  // title = 'MixpanelIntegrationFrontend';
+
   isLoggedIn: boolean = false;
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private router: Router) {
     
   }
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      debugger;
-      // This will only run in the browser
+
       const loggedUser = localStorage.getItem('loggedUser');
       this.isLoggedIn = !!loggedUser;
 

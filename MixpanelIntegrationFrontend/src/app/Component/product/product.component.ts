@@ -4,11 +4,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router} from '@angular/router';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, FormsModule, JsonPipe, MatPaginatorModule],
+  imports: [CommonModule, FormsModule, JsonPipe, MatPaginatorModule, ProductCardComponent],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css'
 })
@@ -22,7 +23,12 @@ export class ProductComponent implements OnInit{
   productOBJ: any ={
     "id":0,
     "brand":"",
-    "title":""
+    "title":"",
+    "category": "",
+    "price": "",
+    "images": "",
+    "stock": "",
+
   }
   ngOnInit(): void{
    
@@ -30,11 +36,12 @@ export class ProductComponent implements OnInit{
   }
   fetchProducts(pageIndex: number, pageSize: number): void {
     const skip = pageIndex * pageSize;
-    const apiUrl = `https://dummyjson.com/products?limit=${pageSize}&skip=${skip}&select=brand,title`;
+    const apiUrl = `https://dummyjson.com/products?limit=${pageSize}&skip=${skip}&select=brand,title,category,price,images,stock`;
     // const x = this.http.get(apiUrl); //holds observal returns .do not mak http request yet
     this.http.get(apiUrl).subscribe((response: any) => {
       this.productList = response.products;
       this.totalProducts = response.total; 
+      debugger;
     });
   }
   onPageChange(event: PageEvent): void {

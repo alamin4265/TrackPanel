@@ -9,11 +9,11 @@
             <a class="navbar-link active" routerLink="/products" (click)="viewProduct()">Product</a>
         </li>
         <li class="navbar-item ">
-          <a class="navbar-link" href="#">Link</a>
-        </li>
-        <li class="navbar-item ">
-          <a class="navbar-link " href="#">Link</a>
-        </li>
+          <a class="navbar-link active" routerLink="/products" (click)="viewCart()">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>{{cartItemCount}}</span>
+          </a>
+      </li>
       </ul>
       <div class="navbar-actions">
         <span class="username">{{loggedUser?.name}}</span>
@@ -21,13 +21,8 @@
       </div>
     </div>
 </nav>
-<div class="container">
-    <div>
-      <button (click)="onviewProduct()">ALL Products</button>
-    </div>
-</div>
+
 <div class="content">
-    <!-- <app-product></app-product> -->
     <router-outlet></router-outlet> 
 </div>
 

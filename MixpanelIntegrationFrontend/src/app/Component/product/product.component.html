@@ -1,8 +1,8 @@
-
+<!-- 
 <div class="container">
     <h1 class="header">Product List</h1>
     <div class="row">
-       <!-- Edit Form -->
+
        <div *ngIf="productOBJ" class="col-md-4 edit-form">
         <h3>Add or Edit Product</h3>
         <form>
@@ -14,17 +14,11 @@
             <label for="title">Title</label>
             <input type="text" id="title" class="form-control" [(ngModel)]="productOBJ.title" name="title" required />
           </div>
-           <!-- @if(productOBJ.id ==0)
-           {
-            <button type="submit" class="btn btn-success" (click)="createProduct()">Add Product</button>
-           }@else{
-            <button type="submit" class="btn btn-success" (click)="updateProduct()">Update Product</button>
-           } -->
            <button *ngIf="productOBJ.id === 0" type="button" class="btn btn-success" (click)="createProduct()">Add Product</button>
            <button *ngIf="productOBJ.id !== 0" type="button" class="btn btn-success" (click)="updateProduct()">Update Product</button>
         </form>
       </div>
-      <!-- Product Table -->
+
       <div class="col-md-8">
         <table class="table table-hover" *ngIf="productList.length > 0">
           <thead class="thead-dark">
@@ -38,6 +32,8 @@
           <tbody>
            
               <tr *ngFor="let item of productList; let i = index">
+                <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+
                   <td>{{ i + 1 + (pageIndex * pageSize) }}</td>
                   <td>{{item.brand}}</td>
                   <td>{{item.title}}</td>
@@ -61,4 +57,34 @@
                [pageSize]="pageSize"
                [pageSizeOptions]="[5, 10, 25, 100]"
                (page)="onPageChange($event)">
- </mat-paginator>
+ </mat-paginator> -->
+
+ <div class="container">
+  <div class="product-card-container">
+    <app-product-card *ngFor="let item of productList" [product]="item" (cardClick)="viewProductDetails($event)"></app-product-card>
+  </div>
+
+  <!-- Edit Form -->
+  <div *ngIf="productOBJ" class="col-md-4 edit-form">
+    <h3>Add or Edit Product</h3>
+    <form>
+      <div class="form-group">
+        <label for="brand">Brand</label>
+        <input type="text" id="brand" class="form-control" [(ngModel)]="productOBJ.brand" name="brand" required />
+      </div>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" class="form-control" [(ngModel)]="productOBJ.title" name="title" required />
+      </div>
+      <button *ngIf="productOBJ.id === 0" type="button" class="btn btn-success" (click)="createProduct()">Add Product</button>
+      <button *ngIf="productOBJ.id !== 0" type="button" class="btn btn-success" (click)="updateProduct()">Update Product</button>
+    </form>
+  </div>
+
+  <mat-paginator [length]="totalProducts"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+</div>
+

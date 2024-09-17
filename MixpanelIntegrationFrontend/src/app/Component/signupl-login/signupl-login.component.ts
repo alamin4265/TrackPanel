@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router} from '@angular/router';
 import { ProductComponent } from '../product/product.component';
 import { HttpClient, HttpClientModule ,provideHttpClient,withFetch } from '@angular/common/http';
+import { LoginModel, SignUpModel } from '../../Model/class';
 
 @Component({
   selector: 'app-signupl-login',
@@ -21,6 +22,7 @@ export class SignuplLoginComponent {
   constructor(private router: Router){}
 
   onRegister(){
+    debugger;
     const localUser = localStorage.getItem('trackpanel18users');
     if(localUser !=null){
       const users = JSON.parse(localUser);
@@ -35,7 +37,7 @@ export class SignuplLoginComponent {
   }
   onLogin(){
     alert('signin')
-    debugger;
+
     const localUser = localStorage.getItem('trackpanel18users');
     if(localUser != null){
       const users = JSON.parse(localUser);
@@ -45,7 +47,7 @@ export class SignuplLoginComponent {
         localStorage.setItem('loggedUser', JSON.stringify(isUserPresent));
         // this.router.navigate(['/products']);
         this.router.navigate(['/products']).then(success => {
-          debugger;
+
           if (success) {
             console.log('Navigation successful');
           } else {
@@ -60,22 +62,5 @@ export class SignuplLoginComponent {
   }
   
 }
-export class SignUpModel {
-  name: string;
-  email: string;
-  password: string;
-  constructor(){
-    this.name = "";
-    this.email= "";
-    this.password= "";
-  }
-}
 
-export class LoginModel {
-  email: string;
-  password: string;
-  constructor(){
-    this.email= "";
-    this.password= "";
-  }
-}
+
