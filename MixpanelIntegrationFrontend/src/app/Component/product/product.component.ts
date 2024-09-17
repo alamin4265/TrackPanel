@@ -40,15 +40,14 @@ export class ProductComponent implements OnInit{
     this.http.get(apiUrl).subscribe((response: any) => {
       this.productList = response.products;
       this.totalProducts = response.total; 
-      debugger;
     });
   }
   onPageChange(event: PageEvent): void {
-    debugger;
+   
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.fetchProducts(this.pageIndex, this.pageSize);
-    debugger;
+  
   }
   createProduct() {
     if (this.productOBJ) {
@@ -56,7 +55,7 @@ export class ProductComponent implements OnInit{
       this.productOBJ.id = last.id + 1; 
       let json = JSON.stringify(this.productOBJ);
       console.log(json);
-      debugger;
+    
       this.http.post(`https://dummyjson.com/products/add`, json,  {
         headers: { 'Content-Type': 'application/json' }
       })
@@ -68,6 +67,7 @@ export class ProductComponent implements OnInit{
 
   updateProduct() {
     if (this.productOBJ) {
+   
       let json = JSON.stringify(this.productOBJ);
       this.http.patch(`https://dummyjson.com/products/${this.productOBJ.id}`, json)
         .subscribe((result: any) => {

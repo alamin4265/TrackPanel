@@ -37,7 +37,6 @@ export class LayoutComponent{
   this.router.navigate(['/addtocart'])
  }
  onviewProduct(){
-  debugger;
   this.router.navigate(['/products']);
  }
 }

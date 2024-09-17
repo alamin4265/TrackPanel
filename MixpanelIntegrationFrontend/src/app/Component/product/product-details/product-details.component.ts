@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MixpanelService } from '../../../Shared/Services/mixpanel.service';
 import { CartService } from '../../../Services/cart.service';
 
 @Component({
@@ -14,20 +15,33 @@ import { CartService } from '../../../Services/cart.service';
 })
 export class ProductDetailsComponent {
   prod: any;
-  count: number = 1;
-  constructor(private route: ActivatedRoute, private http: HttpClient,private router: Router, private cartService: CartService) {}
-  
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private router: Router,
+    private mixpanelService: MixpanelService,
+    private cartService: CartService
+  ) {}
+
+    // @Input() productflag : string  = 'Details';
+    
     ngOnInit(): void {
       const id = this.route.snapshot.paramMap.get('id');
       if (id) {
         this.http.get(`https://dummyjson.com/products/${id}`).subscribe((result: any) => {
           this.prod = result;
+          this.mixpanelService.trackEvent('ProductDetail', { Category: this.prod.category });
         });
       }
     }
-    addToCart(){
-      this.cartService.addToCart(this.prod, this.count);
+
+    addToCart(product: any){
+      // event.stopPropagation();
+      
+      this.cartService.addToCart(product, 1);
+      // this.count = 1;
     }
+
     goBack() {
       this.router.navigate(['/products']);
     }

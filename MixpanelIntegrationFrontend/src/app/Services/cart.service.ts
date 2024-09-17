@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { MixpanelService } from '../Shared/Services/mixpanel.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
+
+  constructor(
+    private mixpanelService: MixpanelService
+  ){}
+
   addProductToCart(product: any, quantity: number) {
     throw new Error('Method not implemented.');
   }
@@ -13,8 +19,11 @@ export class CartService {
   private cartCount : number = 0;
  
   addToCart(product: any, count: number) {
-    const existingProduct = this.cart.find((item:any) => item.title === product.title);
+    
+    this.mixpanelService.trackEvent('AddToCart', { Title: product.title});
 
+    const existingProduct = this.cart.find((item:any) => item.title === product.title);
+    
     if (existingProduct) {
       existingProduct.count += count;  
     } else {
