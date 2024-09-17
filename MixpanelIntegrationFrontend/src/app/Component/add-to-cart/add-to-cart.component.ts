@@ -27,7 +27,7 @@ export class AddToCartComponent {
     private mixpanelService: MixpanelService,
     private router: Router
   ) {
-    debugger;
+  
     this.cartItems = this.cartService.getCartItems();
     console.log(this.cartItems); 
     this.totalPrice = this.cartService.getTotalPrice();

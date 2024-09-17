@@ -26,7 +26,7 @@ export class SignupLoginComponent {
   ){}
 
   onRegister(){
-    debugger;
+   
     const localUser = localStorage.getItem('trackpanel18users');
     if(localUser !=null){
       const users = JSON.parse(localUser);
@@ -50,8 +50,8 @@ export class SignupLoginComponent {
       const isUserPresent = users.find((user:SignUpModel)=> user.email == this.loginobj.email && user.password == this.loginobj.password)
        if(isUserPresent != undefined)
        {
-        this.mixpanelService.identifyUser(this.loginobj.email);
-        this.mixpanelService.trackEvent('People', { email: this.loginobj.email, eventType: 'signin' });
+        this.mixpanelService.identifyUser(this.loginobj.email, users.name);
+        // this.mixpanelService.trackEvent('People', { email: this.loginobj.email, eventType: 'signin' });
         localStorage.setItem('loggedUser', JSON.stringify(isUserPresent));
         // this.router.navigate(['/products']);
         this.router.navigate(['/products']).then(success => {
@@ -65,7 +65,7 @@ export class SignupLoginComponent {
        }else{
         alert("No user forund");
        }
-       debugger;
+     
     }
   }
   

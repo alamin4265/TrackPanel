@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MixpanelService } from '../../../Shared/Services/mixpanel.service';
+import { CartService } from '../../../Services/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -18,7 +19,8 @@ export class ProductDetailsComponent {
     private route: ActivatedRoute,
     private http: HttpClient,
     private router: Router,
-    private mixpanelService: MixpanelService
+    private mixpanelService: MixpanelService,
+    private cartService: CartService
   ) {}
 
     // @Input() productflag : string  = 'Details';
@@ -32,6 +34,14 @@ export class ProductDetailsComponent {
         });
       }
     }
+
+    addToCart(product: any){
+      // event.stopPropagation();
+      
+      this.cartService.addToCart(product, 1);
+      // this.count = 1;
+    }
+
     goBack() {
       this.router.navigate(['/products']);
     }
