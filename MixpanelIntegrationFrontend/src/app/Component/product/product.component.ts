@@ -37,7 +37,6 @@ export class ProductComponent implements OnInit{
   fetchProducts(pageIndex: number, pageSize: number): void {
     const skip = pageIndex * pageSize;
     const apiUrl = `https://dummyjson.com/products?limit=${pageSize}&skip=${skip}&select=brand,title,category,price,images,stock`;
-    // const x = this.http.get(apiUrl); //holds observal returns .do not mak http request yet
     this.http.get(apiUrl).subscribe((response: any) => {
       this.productList = response.products;
       this.totalProducts = response.total; 
@@ -69,7 +68,6 @@ export class ProductComponent implements OnInit{
 
   updateProduct() {
     if (this.productOBJ) {
-    debugger;
       let json = JSON.stringify(this.productOBJ);
       this.http.patch(`https://dummyjson.com/products/${this.productOBJ.id}`, json)
         .subscribe((result: any) => {
@@ -87,7 +85,7 @@ export class ProductComponent implements OnInit{
   onEdit(data: any) {
     this.productOBJ = { ...data}; 
   }
-//route: navigate to the route component as mentioned
+
   viewProductDetails(id: number) {
     this.router.navigate(['/product-details', id]);
   }

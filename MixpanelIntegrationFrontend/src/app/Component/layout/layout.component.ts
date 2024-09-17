@@ -22,6 +22,7 @@ export class LayoutComponent{
     if(loacalUser != null){
       this.loggedUser =JSON.parse(loacalUser);
     }
+    this.cartItemCount =this.cartService.getTotalCount();
  }
  
  onLogOut(){

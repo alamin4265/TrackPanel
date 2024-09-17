@@ -15,9 +15,7 @@ export class ProductCardComponent {
   count: number = 1;
   constructor(private cartService: CartService) {}
 
-  // Add product to cart
   addToCart(event: Event) {
-    debugger;
     event.stopPropagation();
     this.cartService.addToCart(this.product, this.count);
     this.count = 1;

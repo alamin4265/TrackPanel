@@ -6,7 +6,7 @@ import { ProductDetailsComponent } from './Component/product/product-details/pro
 import { AddToCartComponent } from './Component/add-to-cart/add-to-cart.component';
 import { SignupLoginComponent } from './Component/signup-login/signup-login.component';
 import { CheckoutComponent } from './Component/checkout/checkout.component';
-import { CheckoutSuccessComponent } from './checkout-success/checkout-success.component';
+import { CheckoutSuccessComponent } from './Component/checkout-success/checkout-success.component';
 
 export const routes: Routes = [
     {

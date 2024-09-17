@@ -7,11 +7,10 @@
         <p class="card-text"><strong>Category:</strong> {{ prod.category }}</p>
         <p class="card-text"><strong>Description:</strong> {{ prod.description }}</p>
         <p class="card-text"><strong>Price:</strong> ${{ prod.price }}</p>
-        <p class="card-text"><strong>Weight:</strong> {{ prod.weight }}kg</p>
-        
+        <p class="card-text"><strong>Weight:</strong> {{ prod.weight }}kg</p>     
+        <button (click)="addToCart()">Add to Cart</button>
         <button class="btn btn-primary" (click)="goBack()">Back to List</button>
-      </div>
-     
+      </div>   
     </div>
   </div>
   

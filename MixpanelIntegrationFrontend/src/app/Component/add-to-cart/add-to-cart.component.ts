@@ -36,11 +36,11 @@ export class AddToCartComponent {
     }
   }
   removeItem(item: any) {
-    // this.cartService.removeItemFromCart(item);
+    this.cartService.removeProductFromCart(item);
   }
   
   clearCart() {
-    // this.cartService.clearCart();
+    this.cartService.clearCart();
   }
   goToCheckout(){
     this.router.navigate(['/checkout']);
@@ -48,5 +48,7 @@ export class AddToCartComponent {
   goBack() {
     this.router.navigate(['/products']);
   }
-  
+  increment(id : number){
+    this.cartService.incrementQuantity(id);
+  }
 }

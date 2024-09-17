@@ -1,41 +1,38 @@
-/* Product Card Container */
-/* *{
-  background-color: #fcfaff;
-} */
+
 .product-card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
-  gap: 20px; /* Space between cards */
-  justify-content: center; /* Center align cards */
-  padding: 10px; /* Optional: Add some padding around the grid */
-  width: 100%; /* Ensure the container takes full width */
-  box-sizing: border-box; /* Include padding in the element's total width and height */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 20px; 
+  justify-content: center; 
+  padding: 10px; 
+  width: 100%; 
+  box-sizing: border-box; 
   background-color: #fcfaff;
 }
 
-/* Product Card */
+
 .product-card {
-  background-color: #fff; /* Card background color */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
-  overflow: hidden; /* Clips the image and content within card */
-  text-align: center; /* Center align text */
-  transition: transform 0.3s ease; /* Smooth scale transition */
-  width: 100%; /* Full width of the grid item */
+  background-color: #fff; 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  overflow: hidden; 
+  text-align: center; 
+  transition: transform 0.3s ease; 
+  width: 100%; 
 }
 
 .product-card:hover {
-  transform: scale(1.05); /* Slightly scale up on hover */
+  transform: scale(1.05); 
 }
 
-/* Product Image */
+
 .product-image {
-  width: 100%; /* Full width of card */
-  height: 200px; /* Fixed height */
-  object-fit: cover; /* Crop image to fit */
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
-/* Product Info */
+
 .product-info {
   padding: 20px;
 }
@@ -46,20 +43,20 @@
 }
 
 .product-description {
-  color: #666; /* Light text color */
+  color: #666;
   font-size: 14px;
   margin: 10px 0;
 }
 
 .product-price {
   font-size: 20px;
-  color: #333; /* Dark text color */
+  color: #333; 
   margin: 10px 0;
 }
 
 .product-button {
-  background-color: #512da8; /* Button color */
-  color: #fff; /* Text color */
+  background-color: #512da8; 
+  color: #fff; 
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
@@ -69,10 +66,10 @@
 }
 
 .product-button:hover {
-  background-color: #3f2a6f; /* Darker shade on hover */
+  background-color: #3f2a6f; 
 }
 
-/* Existing Styles */
+
 button.btn-success {
   background-color: #28a745;
   color: white;
@@ -127,7 +124,7 @@ tr:hover {
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
-  padding-top: 20px; /* Adjust this value based on your navbar height */
+  padding-top: 20px; 
 }
 
 p {

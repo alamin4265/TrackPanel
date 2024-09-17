@@ -8,15 +8,15 @@ export class CartService {
   addProductToCart(product: any, quantity: number) {
     throw new Error('Method not implemented.');
   }
-  private cart: any = [];
+  private cart: any = JSON.parse(localStorage.getItem('cartItems') || '[]');
   private totalPrice = 0;
-  private cartCount : number = 1;
+  private cartCount : number = 0;
  
   addToCart(product: any, count: number) {
     const existingProduct = this.cart.find((item:any) => item.title === product.title);
 
     if (existingProduct) {
-      existingProduct.count += count;  // Increment the count
+      existingProduct.count += count;  
     } else {
       const cartItem = {
         title: product.title,
@@ -26,6 +26,7 @@ export class CartService {
         images: product.images,
       };
       this.cart.push(cartItem);
+      localStorage.setItem('cartItems',JSON.stringify(this.cart));
     }
     this.updateCartCount();
     this.calculateTotal();
@@ -55,9 +56,25 @@ export class CartService {
   }
   removeProductFromCart(product: any) {
     this.cart = this.cart.filter((item: { title: any; }) => item.title !== product.title);
+    localStorage.setItem('cartItems',JSON.stringify(this.cart));
+    this.getCartItems();
   }
 
   clearCart() {
     this.cart = [];
+  }
+
+  incrementQuantity(id: number){
+    let item = this.cart.find((i: { id: number; })=>i.id ===id);
+    if(item){
+      item.count++;
+    }
+  }
+
+  decrementQuantity(id: number){
+    let item = this.cart.find((i: { id: number; })=>i.id ===id);
+    if(item){
+      item.count--;
+    }
   }
 }

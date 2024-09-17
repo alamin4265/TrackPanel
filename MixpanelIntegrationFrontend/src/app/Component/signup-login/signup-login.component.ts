@@ -45,7 +45,6 @@ export class SignupLoginComponent {
        if(isUserPresent != undefined)
        {
         localStorage.setItem('loggedUser', JSON.stringify(isUserPresent));
-        // this.router.navigate(['/products']);
         this.router.navigate(['/products']).then(success => {
 
           if (success) {
@@ -57,7 +56,7 @@ export class SignupLoginComponent {
        }else{
         alert("No user forund");
        }
-       debugger;
+
     }
   }
   
