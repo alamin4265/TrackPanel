@@ -1459,6 +1459,22 @@
           }
         }
       },
+      "NSubstitute/5.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Castle.Core": "5.1.1"
+        },
+        "compile": {
+          "lib/net6.0/NSubstitute.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/NSubstitute.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "NuGet.Frameworks/6.5.0": {
         "type": "package",
         "compile": {
@@ -4370,6 +4386,24 @@
         "packageIcon.png"
       ]
     },
+    "NSubstitute/5.1.0": {
+      "sha512": "ZCqOP3Kpp2ea7QcLyjMU4wzE+0wmrMN35PQMsdPOHYc2IrvjmusG9hICOiqiOTPKN0gJon6wyCn6ZuGHdNs9hQ==",
+      "type": "package",
+      "path": "nsubstitute/5.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net462/NSubstitute.dll",
+        "lib/net462/NSubstitute.xml",
+        "lib/net6.0/NSubstitute.dll",
+        "lib/net6.0/NSubstitute.xml",
+        "lib/netstandard2.0/NSubstitute.dll",
+        "lib/netstandard2.0/NSubstitute.xml",
+        "nsubstitute.5.1.0.nupkg.sha512",
+        "nsubstitute.nuspec"
+      ]
+    },
     "NuGet.Frameworks/6.5.0": {
       "sha512": "QWINE2x3MbTODsWT1Gh71GaGb5icBz4chS8VYvTgsBnsi8esgN6wtHhydd7fvToWECYGq7T4cgBBDiKD/363fg==",
       "type": "package",
@@ -5655,6 +5689,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Microsoft.NET.Test.Sdk >= 17.8.0",
+      "NSubstitute >= 5.1.0",
       "ProductManagement >= 1.0.0",
       "coverlet.collector >= 6.0.0",
       "xunit >= 2.9.0",
@@ -5722,6 +5757,10 @@
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[17.8.0, )"
+          },
+          "NSubstitute": {
+            "target": "Package",
+            "version": "[5.1.0, )"
           },
           "coverlet.collector": {
             "target": "Package",

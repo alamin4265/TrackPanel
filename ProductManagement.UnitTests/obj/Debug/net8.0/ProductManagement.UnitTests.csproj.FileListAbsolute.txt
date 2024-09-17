@@ -917,3 +917,4 @@ C:\Europe\Testing\ProductManagement.UnitTests\obj\Debug\net8.0\refint\ProductMan
 C:\Europe\Testing\ProductManagement.UnitTests\obj\Debug\net8.0\ProductManagement.UnitTests.pdb
 C:\Europe\Testing\ProductManagement.UnitTests\obj\Debug\net8.0\ProductManagement.UnitTests.genruntimeconfig.cache
 C:\Europe\Testing\ProductManagement.UnitTests\obj\Debug\net8.0\ref\ProductManagement.UnitTests.dll
+C:\Europe\Testing\ProductManagement.UnitTests\bin\Debug\net8.0\NSubstitute.dll
