@@ -8,9 +8,11 @@
         <p class="card-text"><strong>Description:</strong> {{ prod.description }}</p>
         <p class="card-text"><strong>Price:</strong> ${{ prod.price }}</p>
         <p class="card-text"><strong>Weight:</strong> {{ prod.weight }}kg</p>
+        <div style="align-items: center; display: flex; gap: 10px;">
+          <button class="btn btn-primary" (click)="goBack()">Back to List</button>
+          <button class="btn btn-primary" (click)="addToCart(prod)">Add to Cart</button>
+        </div>
         
-        <button class="btn btn-primary" (click)="goBack()">Back to List</button>
-        <button (click)="addToCart(prod)">Add to Cart</button>
       </div>
      
     </div>
