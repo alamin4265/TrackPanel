@@ -1,31 +1,17 @@
 
-<div class="container">
-    <h2 class="header">Single Product Details</h2>
-    <div class="col-md-8">
-      <table class="table table-hover">
-        <thead class="thead-dark">
-          <tr>
-            <th>Category</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Weight</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{prod.category}}</td>
-            <td>{{prod.description}}</td>
-            <td>{{prod.price}}</td>
-            <td>{{prod.weight}}</td>
-          </tr> 
-        </tbody>
-      </table>
-    
-    <button class="btn btn-secondary" (click)="goBack()">Back to List</button>
+   <div class="container">
+    <div class="card product-card">
+      <img src="{{ prod.thumbnail }}" class="card-img-top product-image" alt="{{ prod.title }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ prod.title }}</h5>
+        <p class="card-text"><strong>Category:</strong> {{ prod.category }}</p>
+        <p class="card-text"><strong>Description:</strong> {{ prod.description }}</p>
+        <p class="card-text"><strong>Price:</strong> ${{ prod.price }}</p>
+        <p class="card-text"><strong>Weight:</strong> {{ prod.weight }}kg</p>
+
+        <button class="btn btn-primary" (click)="goBack()">Back to List</button>
+      </div>
+     
+    </div>
   </div>
-  
-  
-  
-  
-    
   

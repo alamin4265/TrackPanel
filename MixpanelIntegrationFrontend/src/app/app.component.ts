@@ -1,13 +1,14 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-import { SignuplLoginComponent } from './Component/signupl-login/signupl-login.component';
+
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { LayoutComponent } from './Component/layout/layout.component';
+import { SignupLoginComponent } from './Component/signup-login/signup-login.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule,SignuplLoginComponent,LayoutComponent],
+  imports: [RouterOutlet,CommonModule,SignupLoginComponent,LayoutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

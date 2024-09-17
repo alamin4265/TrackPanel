@@ -1,16 +1,26 @@
-<div *ngIf="cartItems.length > 0; else emptyCart">
-    <ul>
-      <li *ngFor="let item of cartItems">
-        <img [src]="item.product.images?.[0] || 'path/to/default-image.jpg'" alt="Product Image" class="product-image">
-        <h3>{{ item.product.title }}</h3>
-        <p>{{ item.product.price}}</p>
-        <p>Quantity: {{ item.quantity }}</p>
-        <button >Remove</button>
-      </li>
-    </ul>
-    <button >Clear Cart</button>
+<div class="product-list">
+  <h1>Cart Items</h1>
+  <div class="product-item" *ngFor="let item of cartItems">
+    <img [src]="item.images?.[0]" alt="Product Image" class="product-image">
+    <div class="product-details">
+      <h3>{{item.title}}</h3>
+      <p>Category: {{item.category}}</p>
+      <p>Price: ${{item.price}}</p>
+      <p>Quantity: {{item.count}}</p>
+      <button (click)="removeItem(item)" class="btn-remove">Remove</button>
+    </div>
   </div>
-  <!-- <ng-template #emptyCart>
-    <p>Your cart is empty.</p>
-  </ng-template> -->
-  <h1>cart</h1>
+  <!-- <button (click)="clearCart()" class="btn-clear">Clear Cart</button> -->
+</div>
+<div class="total-price">
+  <div class="product-item">
+    <div class="product-details">
+      <h3>Total Price:</h3>
+      <p>${{totalPrice}}</p>
+    </div>
+  </div>
+</div>
+
+<ng-template #emptyCart>
+  <p class="empty-message">Your cart is empty.</p>
+</ng-template>

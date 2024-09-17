@@ -1,9 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { CartService } from '../../Services/cart.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule, JsonPipe } from '@angular/common';
+import { CartItem } from '../../Model/class';
 
 
 @Component({
   selector: 'app-add-to-cart',
+  standalone: true,
+  imports: [FormsModule,CommonModule,JsonPipe],
   templateUrl: './add-to-cart.component.html',
   styleUrls: ['./add-to-cart.component.css']
 })
@@ -11,17 +16,18 @@ export class AddToCartComponent {
   @Input() product: any;
   quantity: number = 1;
   feedbackMessage: string | null = null;
-  cartItems = [];
-  // constructor(private cartService: CartService) {}
+  cartItems: CartItem[] = [];
+ 
   totalPrice = 0;
 
   constructor(private cartService: CartService) {
-    debugger;
+  debugger;
     this.cartItems = this.cartService.getCartItems();
+    console.log(this.cartItems); 
     this.totalPrice = this.cartService.getTotalPrice();
   }
   addToCart() {
-    debugger;
+
     if (this.product) {
       this.cartService.addProductToCart(this.product, this.quantity);
       this.feedbackMessage = 'Product added to cart!';
@@ -29,4 +35,12 @@ export class AddToCartComponent {
       this.feedbackMessage = 'Failed to add product to cart.';
     }
   }
+  removeItem(item: any) {
+    // this.cartService.removeItemFromCart(item);
+  }
+  
+  clearCart() {
+    // this.cartService.clearCart();
+  }
+  
 }
