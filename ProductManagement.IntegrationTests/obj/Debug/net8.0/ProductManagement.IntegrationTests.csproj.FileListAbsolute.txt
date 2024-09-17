@@ -99,17 +99,17 @@ C:\Umme Rukaya Suny\Testing\ProductManagement.IntegrationTests\obj\Debug\net8.0\
 C:\Umme Rukaya Suny\Testing\ProductManagement.IntegrationTests\obj\Debug\net8.0\ref\ProductManagement.IntegrationTests.dll
 C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\.msCoverageSourceRootsMapping_ProductManagement.IntegrationTests
 C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\CoverletSourceRootsMapping_ProductManagement.IntegrationTests
-C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\testhost.exe
 C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\testhost.dll
-C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
-C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\xunit.runner.reporters.netcoreapp10.dll
-C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\xunit.runner.utility.netcoreapp10.dll
 C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\ProductManagement.deps.json
 C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\ProductManagement.runtimeconfig.json
 C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\appsettings.Development.json
 C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\appsettings.json
 C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\ProductManagement.exe
+C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\testhost.exe
 C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\MvcTestingAppManifest.json
+C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\xunit.runner.reporters.netcoreapp10.dll
+C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\xunit.runner.utility.netcoreapp10.dll
 C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\ProductManagement.IntegrationTests.deps.json
 C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\ProductManagement.IntegrationTests.runtimeconfig.json
 C:\Europe\Testing\ProductManagement.IntegrationTests\bin\Debug\net8.0\ProductManagement.IntegrationTests.dll

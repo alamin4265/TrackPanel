@@ -40,7 +40,7 @@ namespace ProductManagement.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ProductDto>> CreateProduct([FromBody] ProductDto productDto)
+        public async Task<ActionResult<ProductDto>> CreateProduct([FromBody] UpsertProductDto productDto)
         {
             if (!ModelState.IsValid)
             {
@@ -55,7 +55,7 @@ namespace ProductManagement.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, [FromBody] ProductDto productDto)
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] UpsertProductDto productDto)
         {
             var product = await _productService.GetProductByIdAsync(id);
             if (product == null)

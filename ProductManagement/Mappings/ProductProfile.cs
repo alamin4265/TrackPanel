@@ -8,8 +8,8 @@ namespace ProductManagement.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<Product, ProductDto>();
-            CreateMap<ProductDto, Product>()
+            CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<Product, UpsertProductDto>().ReverseMap()
                 .ForMember(o => o.Id, opt => opt.Ignore());
         }
     }

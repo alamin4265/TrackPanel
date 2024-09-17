@@ -55,34 +55,34 @@ namespace ProductManagement.IntegrationTests
         public async Task CreateProduct_ShouldReturnCreatedProduct()
         {
             // Arrange
-            var newProduct = new ProductDto { Name = "Television", Price = 8000 };
+            var productDto = new UpsertProductDto { Name = "Television", Description = "LG's smart TV", Price = 8000 };
 
             // Act
-            var response = await _client.PostAsJsonAsync("/product", newProduct);
+            var response = await _client.PostAsJsonAsync("/product", productDto);
 
             // Assert
             Assert.True(response.IsSuccessStatusCode);
             Assert.Equal(HttpStatusCode.Created, response.StatusCode);
             var createdProduct = await response.Content.ReadFromJsonAsync<ProductDto>();
             Assert.NotNull(createdProduct);
-            Assert.Equal(newProduct.Name, createdProduct.Name);
-            Assert.Equal(newProduct.Price, createdProduct.Price);
+            Assert.Equal(productDto.Name, createdProduct.Name);
+            Assert.Equal(productDto.Price, createdProduct.Price);
         }
 
         [Fact]
         public async Task UpdateProduct_ShouldReturnUpdatedProduct_WhenProductExists()
         {
             // Arrange
-            var newProduct = new ProductDto { Name = "Television", Price = 8000 };
-            var createResponse = await _client.PostAsJsonAsync("/Product", newProduct);
+            var productDto = new UpsertProductDto { Name = "Television", Description = "LG's smart TV", Price = 8000 };
+            var createResponse = await _client.PostAsJsonAsync("/product", productDto);
             createResponse.EnsureSuccessStatusCode();
             var createdProduct = await createResponse.Content.ReadFromJsonAsync<ProductDto>();
 
-            createdProduct.Name = "Television 2.0";
-            createdProduct.Price = 6000;
+            productDto.Name = "Television 2.0";
+            productDto.Price = 6000;
 
             // Act
-            var updateResponse = await _client.PutAsJsonAsync($"/Product/{createdProduct.Id}", createdProduct);
+            var updateResponse = await _client.PutAsJsonAsync($"/product/{createdProduct.Id}", productDto);
             updateResponse.EnsureSuccessStatusCode();
             var updatedProduct = await updateResponse.Content.ReadFromJsonAsync<ProductDto>();
 
@@ -90,18 +90,18 @@ namespace ProductManagement.IntegrationTests
             Assert.Equal(HttpStatusCode.OK, updateResponse.StatusCode);
             Assert.NotNull(updatedProduct);
             Assert.Equal(createdProduct.Id, updatedProduct.Id);
-            Assert.Equal(createdProduct.Name, updatedProduct.Name); 
-            Assert.Equal(createdProduct.Price, updatedProduct.Price);
+            Assert.Equal(productDto.Name, updatedProduct.Name); 
+            Assert.Equal(productDto.Price, updatedProduct.Price);
         }
 
         [Fact]
         public async Task UpdateProduct_ShouldReturnNotFound_WhenProductDoesNotExist()
         {
             // Arrange
-            var productDto = new ProductDto { Id = 999, Name = "Non-existent Product" };
+            var productDto = new UpsertProductDto { Name = "Non-existent Product", Description = "test description" };
 
             // Act
-            var response = await _client.PutAsJsonAsync($"/Product/{productDto.Id}", productDto);
+            var response = await _client.PutAsJsonAsync($"/product/999", productDto);
 
             // Assert
             Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
@@ -111,8 +111,8 @@ namespace ProductManagement.IntegrationTests
         public async Task DeleteProduct_ShouldReturnNoContent()
         {
             // Arrange
-            var newProduct = new ProductDto { Name = "Television", Price = 5000 };
-            var createResponse = await _client.PostAsJsonAsync("/product", newProduct);
+            var productDto = new UpsertProductDto { Name = "Television", Description = "LG's smart TV", Price = 8000 };
+            var createResponse = await _client.PostAsJsonAsync("/product", productDto);
             createResponse.EnsureSuccessStatusCode();
 
             var createdProduct = await createResponse.Content.ReadFromJsonAsync<ProductDto>();
