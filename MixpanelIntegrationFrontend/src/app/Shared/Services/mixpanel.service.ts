@@ -7,7 +7,10 @@ import mixpanel from 'mixpanel-browser';
 export class MixpanelService {
 
   constructor() {
+    //daa76dd6afd4babe15f321a4e77a3ded  -me
+    //874f28d8800d06ca29cf542aa0b618ad  -bhai
     mixpanel.init('874f28d8800d06ca29cf542aa0b618ad', {
+      api_host: "http://localhost:8080",
       debug: true,
       track_pageview: true,
       persistence: 'localStorage',

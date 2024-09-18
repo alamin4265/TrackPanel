@@ -19,7 +19,7 @@ export class CheckoutComponent implements OnInit {
   count : number=0;
   constructor(private cartService: CartService,
     private router: Router,
-    private mixpanelService: MixpanelService,
+    private mixpanelService: MixpanelService
     ) {}
 
   ngOnInit(): void {
