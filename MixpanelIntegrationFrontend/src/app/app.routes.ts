@@ -7,16 +7,20 @@ import { AddToCartComponent } from './Component/add-to-cart/add-to-cart.componen
 import { SignupLoginComponent } from './Component/signup-login/signup-login.component';
 import { CheckoutComponent } from './Component/checkout/checkout.component';
 import { CheckoutSuccessComponent } from './Component/checkout-success/checkout-success.component';
+import { authGuard } from './Services/auth.guard';
+import { loginGuard } from './Services/login.guard';
+import { AddProductComponent } from './Component/product/add-product/add-product.component';
 
 export const routes: Routes = [
     {
         path:'',
         redirectTo:'signup-login',
-        pathMatch:'full'
+        pathMatch:'full',
       },
     {
         path:'signup-login',
-        component:SignupLoginComponent
+        component:SignupLoginComponent,
+        canActivate: [loginGuard], 
     },
     {
         path: '',
@@ -25,30 +29,41 @@ export const routes: Routes = [
             {
                 path: 'products',
                 component: ProductComponent,
-                pathMatch: 'full'
+                // pathMatch: 'full',
+                canActivate: [authGuard],
             },
             {
                 path: 'product-details/:id',
                 component: ProductDetailsComponent,
-                pathMatch: 'full'
+                // pathMatch: 'full',
+                canActivate: [authGuard],
+            },
+            {
+                path:'products/add',
+                component:AddProductComponent,
+                canActivate: [authGuard],
+            },
+            {
+                path:'addtocart',
+                component:AddToCartComponent,
+                canActivate: [authGuard],
+            },
+            {
+                path:'checkout',
+                component:CheckoutComponent,
+                canActivate: [authGuard],
+            },
+            {
+                path:'checkout-success',
+                component:CheckoutSuccessComponent,
+                canActivate: [authGuard],
             }
         ]
     },
-    {
-        path:'addtocart',
-        component:AddToCartComponent
-    },
-    {
-        path:'checkout',
-        component:CheckoutComponent
-    },
-    {
-        path:'checkout-success',
-        component:CheckoutSuccessComponent
-    },
-    {
-        path: '**',
-        redirectTo: 'signup-login'
-    },
+   
+    // {
+    //     path: '**',
+    //     redirectTo: 'signup-login'
+    // },
     
 ];

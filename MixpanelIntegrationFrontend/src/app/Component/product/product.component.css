@@ -167,3 +167,35 @@ p {
   width: 100%; 
   padding: 0.5rem; 
 }
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-box {
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+}
+.loading-indicator p {
+  font-size: 16px;
+  color: #666;
+  margin-top: 10px;
+}
+
+::ng-deep .mat-paginator {
+  background-color: #9c8989; /* Replace with your desired background color */
+  color: #333; /* Change text color if needed */
+}

@@ -26,4 +26,26 @@ export class SignUpModel {
     category?: string; 
     images?: string[]; 
   }
+
+  export class Product {
+    id: number;
+    brand: string;
+    title:string;
+    category: string;
+    description:string;
+    price: string;
+    images: string;
+    stock: string;
+
+    constructor(){
+     this.id=0;
+     this.brand="";
+     this.title="";
+     this.category="";
+     this.description="";
+     this.price="";
+     this.images="";
+     this.stock="";
+    }
+  }
   

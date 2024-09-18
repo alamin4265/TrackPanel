@@ -18,36 +18,37 @@ export class ProductComponent implements OnInit{
   pageSize: number = 10;
   pageIndex: number = 0;
   productList: any [] =[];
-  
+  loading:boolean = true;    
+  searchQuery: string = ''; 
   constructor(private http : HttpClient, private router: Router) { }
   productOBJ: any ={
     "id":0,
     "brand":"",
     "title":"",
     "category": "",
+    "description":"",
     "price": "",
     "images": "",
     "stock": "",
-
   }
   ngOnInit(): void{
    
     this.fetchProducts(this.pageIndex, this.pageSize);
   }
   fetchProducts(pageIndex: number, pageSize: number): void {
+    this.loading = true;
     const skip = pageIndex * pageSize;
-    const apiUrl = `https://dummyjson.com/products?limit=${pageSize}&skip=${skip}&select=brand,title,category,price,images,stock`;
+    const apiUrl = `https://dummyjson.com/products?limit=${pageSize}&skip=${skip}&select=brand,title,category,description,price,images,stock`;
     this.http.get(apiUrl).subscribe((response: any) => {
       this.productList = response.products;
       this.totalProducts = response.total; 
+      this.loading = false;
     });
   }
   onPageChange(event: PageEvent): void {
-   
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
-    this.fetchProducts(this.pageIndex, this.pageSize);
-  
+    this.fetchProducts(this.pageIndex, this.pageSize); 
   }
   createProduct() {
     if (this.productOBJ) {
@@ -94,5 +95,18 @@ export class ProductComponent implements OnInit{
     this.http.delete("https://dummyjson.com/products/"+id).subscribe((result:any)=>{
       this.productList = this.productList.filter(product => product.id !== id);
     }); 
+  }
+  
+  onSearch(): void {
+    if (this.searchQuery.trim() === '') {
+      this.productList = this.productList;  
+    } else {
+      this.loading = true;
+      this.http.get(`https://dummyjson.com/products/search?q=${this.searchQuery}`)
+        .subscribe((response: any) => {
+          this.productList = response.products; 
+          this.loading = false;
+        });
+    }
   }
 }

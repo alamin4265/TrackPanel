@@ -22,8 +22,6 @@ export class ProductDetailsComponent {
     private mixpanelService: MixpanelService,
     private cartService: CartService
   ) {}
-
-    // @Input() productflag : string  = 'Details';
     
     ngOnInit(): void {
       const id = this.route.snapshot.paramMap.get('id');
@@ -35,11 +33,8 @@ export class ProductDetailsComponent {
       }
     }
 
-    addToCart(product: any){
-      // event.stopPropagation();
-      
+    addToCart(product: any){    
       this.cartService.addToCart(product, 1);
-      // this.count = 1;
     }
 
     goBack() {

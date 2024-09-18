@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
-export class LayoutComponent{
+export class LayoutComponent implements OnInit{
  loggedUser: any;
  cartItemCount: number = 0;
  constructor(private router: Router, private cartService: CartService){
@@ -23,8 +23,13 @@ export class LayoutComponent{
       this.loggedUser =JSON.parse(loacalUser);
     }
     this.cartItemCount =this.cartService.getTotalCount();
+    this.updateCartItemCount();
  }
- 
+  ngOnInit() {
+    this.cartService.cartCount$.subscribe(count => {
+      this.cartItemCount = count;
+    });
+  }
  onLogOut(){
   localStorage.removeItem('loggedUser');
   this.router.navigate(['/signup-login'])
@@ -39,4 +44,10 @@ export class LayoutComponent{
  onviewProduct(){
   this.router.navigate(['/products']);
  }
+ addProduct(){
+  this.router.navigate(['/products/add']);
+ }
+ private updateCartItemCount() {
+  this.cartItemCount = this.cartService.getTotalCount();
+}
 }

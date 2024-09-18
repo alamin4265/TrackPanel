@@ -38,6 +38,7 @@ export class CheckoutSuccessComponent {
     }
   }
   Purchase(){
+    this.cartService.clearCart();
     this.paymentSuccess = true;
     alert('payment-succuess');
     this.router.navigate(['/products']);
