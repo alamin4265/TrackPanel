@@ -1,8 +1,12 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Mixpanel;
 using ProductManagement.Domain;
 using ProductManagement.Models;
 using ProductManagement.Services;
+using System.Net.Http;
+using System.Text.Json;
+using System.Text;
 
 namespace ProductManagement.Controllers
 {
@@ -12,11 +16,14 @@ namespace ProductManagement.Controllers
     {
         private readonly IProductService _productService;
         private readonly IMapper _mapper;
+        private readonly IMixpanelService _mixpanelService;
 
-        public ProductController(IProductService productService, IMapper mapper)
+
+        public ProductController(IProductService productService, IMapper mapper , IMixpanelService mixpanelService)
         {
             _productService = productService;
             _mapper = mapper;
+            _mixpanelService = mixpanelService;
         }
 
         [HttpGet]
@@ -26,6 +33,7 @@ namespace ProductManagement.Controllers
             var productDtos = _mapper.Map<IEnumerable<ProductDto>>(products);
             return Ok(productDtos);
         }
+      
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDto>> GetProduct(int id)
@@ -35,6 +43,7 @@ namespace ProductManagement.Controllers
             {
                 return NotFound();
             }
+            bool success = await _mixpanelService.TrackEventAsync("Product Viewed", product);
             var productDto = _mapper.Map<ProductDto>(product);
             return Ok(productDto);
         }
